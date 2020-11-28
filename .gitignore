@@ -1,0 +1,13 @@
+# PyCharm/IDEA
+.idea/
+*.iml
+
+# Python3
+**/__pycache__
+
+# pytest
+.cache
+.pytest_cache
+
+# venv
+venv/
