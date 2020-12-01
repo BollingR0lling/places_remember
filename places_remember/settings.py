@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'social_django',
+    'crispy_forms',
     'mainapp',
 ]
 
@@ -115,7 +116,7 @@ SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('FACEBOOK_KEY')
 SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('FACEBOOK_SECRET')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'fields': 'id, name, email, picture.type(large), link'
+    'fields': 'id, name, email, picture.type(large), link'
 }
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('name', 'name'),
@@ -123,6 +124,9 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('picture', 'picture'),
     ('link', 'profile_url'),
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

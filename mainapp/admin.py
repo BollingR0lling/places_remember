@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .views import Memory
 
-# Register your models here.
+admin.site.register(Memory)
