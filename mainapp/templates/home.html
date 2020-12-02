@@ -14,7 +14,7 @@
         {% endfor %}
         <div class="col-sm-12 mt-2 text-center">
             <button class="btn btn-danger">
-                <a href="{% url 'logout' %}">Logout</a>
+                <a href="{% url 'logout' %}">Выйти</a>
             </button>
         </div>
     </div>
@@ -36,10 +36,8 @@
     {% for memory in memories %}
     <div class="column">
         <div class="card my-3">
-            <div class="card-body">
-                <h5 class="card-title">{{memory.title}}</h5>
-                <p>{{ memory.description|slice:"0:50" }}...</p>
-            </div>
+            <h5 class="card-title">{{memory.title}}</h5>
+            <textarea>{{ memory.description }}</textarea>
             <div class="card-footer">
                 <form action="{% url 'delete_memory' memory_id=memory.id %}">
                     <button type='submit' class="btn btn-danger" style="width: 100%">Удалить</button>

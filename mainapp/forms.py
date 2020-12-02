@@ -12,16 +12,16 @@ from .models import Memory
 class MemoryModelForm(ModelForm):
     location = CharField(
         label='',
-        widget=TextInput(attrs={"placeholder": "Memory place"}))
+        widget=TextInput(attrs={"placeholder": "Место воспоминания"}))
 
     title = CharField(
         label='',
-        widget=TextInput(attrs={"placeholder": "Your memory"})
+        widget=TextInput(attrs={"placeholder": "Придумайте для него название"})
     )
     description = CharField(
         label='',
         widget=Textarea(attrs={
-            "placeholder": "Describe your memory"
+            "placeholder": "Опишите его"
         })
     )
 
@@ -37,4 +37,4 @@ class MemoryModelForm(ModelForm):
             p_lat, p_lon = place.latitude, place.longitude
             return location
         except AttributeError:
-            raise ValidationError('This place is not exists')
+            raise ValidationError('Такого места нет на карте, проверьте ввод')
