@@ -42,7 +42,6 @@ def add_memory(request):
             title=form.cleaned_data.get('title'),
             description=form.cleaned_data.get('description')
         )
-
         memory.save()
         return redirect('home')
 
@@ -55,6 +54,6 @@ def add_memory(request):
 
 @login_required
 def delete_memory(request, *args, **kwargs):
-    memory = Memory.objects.get(title=kwargs.get('memory_title'))
+    memory = Memory.objects.get(id=kwargs.get('memory_id'))
     memory.delete()
     return redirect('home')

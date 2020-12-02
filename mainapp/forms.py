@@ -6,7 +6,6 @@ from django.forms import (
     ValidationError
 )
 from geopy import Nominatim
-
 from .models import Memory
 
 
@@ -38,4 +37,4 @@ class MemoryModelForm(ModelForm):
             p_lat, p_lon = place.latitude, place.longitude
             return location
         except AttributeError:
-            raise ValidationError("This place is not exists")
+            raise ValidationError('This place is not exists')

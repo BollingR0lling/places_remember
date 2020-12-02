@@ -7,7 +7,7 @@ User = get_user_model()
 class Memory(models.Model):
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     location = models.CharField(max_length=255, null=False, verbose_name='Место')
-    title = models.CharField(max_length=50, unique=True, null=False, verbose_name='Воспоминание')
+    title = models.CharField(max_length=50, null=False, verbose_name='Воспоминание')
     description = models.TextField(max_length=1024, null=False, verbose_name='Описание')
 
     def __str__(self):

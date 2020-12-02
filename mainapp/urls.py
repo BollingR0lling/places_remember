@@ -8,5 +8,5 @@ urlpatterns = [
     path('social_auth/', include('social_django.urls', namespace='social')),
     path('home', home, name='home'),
     path('add_memory', add_memory, name='add_memory'),
-    path('delete_memory/<str:memory_title>', delete_memory, name='delete_memory')
+    path('delete_memory/<str:memory_id>', delete_memory, name='delete_memory')
 ]

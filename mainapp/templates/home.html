@@ -41,7 +41,7 @@
                 <p>{{ memory.description|slice:"0:50" }}...</p>
             </div>
             <div class="card-footer">
-                <form action="{% url 'delete_memory' memory_title=memory.title %}">
+                <form action="{% url 'delete_memory' memory_id=memory.id %}">
                     <button type='submit' class="btn btn-danger" style="width: 100%">Удалить</button>
                 </form>
             </div>
