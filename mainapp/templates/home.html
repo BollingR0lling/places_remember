@@ -33,27 +33,28 @@
     {{ map|safe }}
 </div>
 <div class="d-flex flex-wrap">
-    {% for item in memories %}
+    {% for memory in memories %}
     <div class="column">
         <div class="card my-3">
             <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <p>{{ item.description|slice:"0:50" }}...</p>
+                <h5 class="card-title">{{memory.title}}</h5>
+                <p>{{ memory.description|slice:"0:50" }}...</p>
             </div>
             <div class="card-footer">
-                <a href="#" class="btn btn-danger" style="width: 100%;margin-bottom: 5px;">Редактировать</a>
-                <a href="#" class="btn btn-danger" style="width: 100%">Удалить</a>
+                <form action="{% url 'delete_memory' memory_title=memory.title %}">
+                    <button type='submit' class="btn btn-danger" style="width: 100%">Удалить</button>
+                </form>
             </div>
         </div>
     </div>
     {% endfor %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
-    <div class="container">
-        <button class="btn btn-danger">
-            <a href="{% url 'add_memory' %}">Добавить воспоминание</a>
-        </button>
-    </div>
-</nav>
+        <div class="container">
+            <button class="btn btn-danger">
+                <a href="{% url 'add_memory' %}">Добавить воспоминание</a>
+            </button>
+        </div>
+    </nav>
 </div>
 {% endif %}
 {% endblock %}

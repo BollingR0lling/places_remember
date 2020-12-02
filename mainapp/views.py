@@ -51,3 +51,10 @@ def add_memory(request):
         'map': m,
     }
     return render(request, 'add_memory.html', context)
+
+
+@login_required
+def delete_memory(request, *args, **kwargs):
+    memory = Memory.objects.get(title=kwargs.get('memory_title'))
+    memory.delete()
+    return redirect('home')
