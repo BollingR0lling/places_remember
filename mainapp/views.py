@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from geopy.geocoders import Nominatim
+from collections import defaultdict
 from .forms import MemoryModelForm
 from .models import Memory
 import folium
@@ -15,12 +16,15 @@ def home(request):
     m = folium.Map(width=1250, height=750, location=[56.8334, 60.5984])
     memories = Memory.objects.filter(user=request.user)
     if memories:
+        memory_places = defaultdict(str)
         for memory in memories:
+            memory_places[memory.location] += memory.title + "\n"
+        for location, title in memory_places.items():
             geolocator = Nominatim(user_agent='Mozilla/5.0')
-            location = geolocator.geocode(memory.location)
+            location = geolocator.geocode(location)
             folium.Marker(
                 [location.latitude, location.longitude],
-                popup=f'{str(memory.title.encode("unicode_escape").decode())}',
+                popup=str(title.encode("unicode_escape").decode()),
                 icon=folium.Icon(color='red', icon='info-sign')
             ).add_to(m)
     html_map = m._repr_html_()
