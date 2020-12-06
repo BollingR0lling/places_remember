@@ -26,7 +26,7 @@ SECRET_KEY = 'u&%z)l6qkyf-8$#)%@ivr^_5isem1qvi0izzcx4xacm7$ow$&-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['stormy-plateau-40497.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['stormy-plateau-40497.herokuapp.com']
 
 # Application definition
 
