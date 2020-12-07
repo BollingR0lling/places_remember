@@ -38,3 +38,4 @@ typing-extensions==3.7.4.3
 urllib3==1.26.2
 whitenoise==5.2.0
 yarl==1.6.3
+python-dotenv==0.15.0
