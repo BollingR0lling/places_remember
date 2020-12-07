@@ -13,9 +13,15 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -85,8 +91,6 @@ WSGI_APPLICATION = 'places_remember.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django_db',
         'USER': 'django',
@@ -95,6 +99,17 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+if os.environ.get('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': 'github_actions',
+           'USER': 'postgres',
+           'PASSWORD': 'postgres',
+           'HOST': '127.0.0.1',
+           'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -152,7 +167,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Activate Django-Heroku.
 django_heroku.settings(locals())

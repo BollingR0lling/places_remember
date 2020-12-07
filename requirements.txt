@@ -3,7 +3,7 @@ asgiref==3.3.1
 async-timeout==3.0.1
 attrs==20.3.0
 branca==0.4.1
-certifi==2020.11.8
+certifi==2020.12.5
 cffi==1.14.4
 chardet==3.0.4
 cryptography==3.2.1
@@ -23,7 +23,6 @@ MarkupSafe==1.1.1
 maxminddb==2.0.3
 oauthlib==3.1.0
 postgres==3.0.0
-psycopg2==2.8.6
 psycopg2-binary==2.8.6
 psycopg2-pool==1.1
 pycparser==2.20
@@ -39,3 +38,4 @@ typing-extensions==3.7.4.3
 urllib3==1.26.2
 whitenoise==5.2.0
 yarl==1.6.3
+python-dotenv==0.15.0
