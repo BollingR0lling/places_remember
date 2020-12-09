@@ -27,7 +27,7 @@ if os.path.exists(dotenv_path):
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = "u&%z)l6qkyf-8$#)%@ivr^_5isem1qvi0izzcx4xacm7$ow$&-"
+SECRET_KEY = os.getenv('APP_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -134,8 +134,8 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = '7693219'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'V3mkkds0hui7myzyIp7H'
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('VK_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('VK_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = [
     'photos',
     'email',
